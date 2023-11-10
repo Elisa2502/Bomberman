@@ -1,5 +1,5 @@
 Class {
-	#name : #Case,
+	#name : #Cell,
 	#superclass : #Object,
 	#instVars : [
 		'position'
@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #accessing }
-Case >> position [
+Cell >> position [
 
 	^ position
 ]
 
 { #category : #accessing }
-Case >> position: newPosition [
+Cell >> position: newPosition [
 
 	position := newPosition
 ]
