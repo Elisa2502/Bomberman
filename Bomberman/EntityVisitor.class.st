@@ -7,3 +7,17 @@ Class {
 	],
 	#category : #'Bomberman-entity'
 }
+
+{ #category : #visiting }
+EntityVisitor >> visitBreakableWall: cell [
+
+]
+
+{ #category : #visiting }
+EntityVisitor >> visitEmptyCell: cell [
+]
+
+{ #category : #visiting }
+EntityVisitor >> visitWallCell: cell [
+
+]
