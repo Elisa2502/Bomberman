@@ -5,7 +5,7 @@ Class {
 		'x',
 		'y'
 	],
-	#category : #Bomberman
+	#category : #'Bomberman-board'
 }
 
 { #category : #accessing }

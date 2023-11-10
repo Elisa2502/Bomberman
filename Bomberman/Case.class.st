@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'position'
 	],
-	#category : #Bomberman
+	#category : #'Bomberman-board'
 }
 
 { #category : #accessing }
