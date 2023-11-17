@@ -3,3 +3,9 @@ Class {
 	#superclass : #Cell,
 	#category : #'Bomberman-board'
 }
+
+{ #category : #visiting }
+BreakableWall >> accept: entity [
+
+	^ entity visitBreakableWall: self
+]

@@ -3,3 +3,9 @@ Class {
 	#superclass : #Cell,
 	#category : #'Bomberman-board'
 }
+
+{ #category : #visiting }
+Empty >> accept: entity [
+
+	^ entity visitEmptyCell: self
+]
