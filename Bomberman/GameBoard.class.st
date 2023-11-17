@@ -25,6 +25,21 @@ GameBoard >> board: anBoard [
 	 board := anBoard  
 ]
 
+{ #category : #initialization }
+GameBoard >> cellRepresentationFor: aCell [
+    "Retourne une représentation visuelle pour la cellule donnée."
+
+    | representation |
+    representation := aCell display.
+
+    "Utilisation de caractères spéciaux pour créer une apparence tridimensionnelle"
+    (representation = 'Wall') ifTrue: [^ '█'].
+    (representation = 'Empty') ifTrue: [^ ' '].
+    (representation = 'BreakableWall') ifTrue: [^ '░'].
+
+    ^ ' '.
+]
+
 { #category : #'as yet unclassified' }
 GameBoard >> configureGrid [
 	
@@ -45,10 +60,10 @@ GameBoard >> configureGrid2 [
                    {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
                    {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
                    {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
+                   {Wall. Wall.  BreakableWall. BreakableWall. Empty. Empty. BreakableWall. Wall.}.
                    {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
                    {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                   {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                  {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
+                  {Wall. Wall. Wall. Wall. Wall. Wall. Wall. Wall.}.
 				 }.
 
         self populateBoard.
@@ -70,10 +85,15 @@ GameBoard >> createCellFromSymbol: aSymbol [
 
 { #category : #initialization }
 GameBoard >> displayBoard [
-        "Affiche le contenu du tableau (board)."
-			board do: [ :cell |
-            Transcript show: (cell display); cr.
-        ].
+
+    board withIndexDo: [ :cell :index |
+        | positionX positionY |
+        positionX := cell position x.
+        positionY := cell position y.
+
+        Transcript nextPutAll: (self cellRepresentationFor: cell).
+        (index \\ width = 0) ifTrue: [Transcript cr]. "Nouvelle ligne après chaque ligne complète"
+    ].
 ]
 
 { #category : #initialization }
