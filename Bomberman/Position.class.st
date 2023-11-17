@@ -8,6 +8,12 @@ Class {
 	#category : #'Bomberman-board'
 }
 
+{ #category : #initialization }
+Position >> initializeX: posX Y: posY [ 
+	self x: posX .
+	self y: posY .
+]
+
 { #category : #accessing }
 Position >> x [
 

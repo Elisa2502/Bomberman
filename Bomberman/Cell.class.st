@@ -7,6 +7,18 @@ Class {
 	#category : #'Bomberman-board'
 }
 
+{ #category : #visiting }
+Cell >> accept: entity [
+
+	^ self subclassResponsibility
+]
+
+{ #category : #initialization }
+Cell >> initialize: newPosition [
+
+	self position: position
+]
+
 { #category : #accessing }
 Cell >> position [
 
