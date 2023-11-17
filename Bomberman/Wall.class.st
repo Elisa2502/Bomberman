@@ -9,3 +9,9 @@ Wall >> accept: entity [
 
 	^ entity visitWallCell: self
 ]
+
+{ #category : #accessing }
+Wall >> display [
+
+	^ 'Wall'
+]

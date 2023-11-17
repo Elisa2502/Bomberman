@@ -9,3 +9,9 @@ BreakableWall >> accept: entity [
 
 	^ entity visitBreakableWall: self
 ]
+
+{ #category : #accessing }
+BreakableWall >> display [
+
+	^ 'BreakableWall'
+]

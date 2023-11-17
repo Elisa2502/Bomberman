@@ -13,6 +13,12 @@ Cell >> accept: entity [
 	^ self subclassResponsibility
 ]
 
+{ #category : #accessing }
+Cell >> display [
+
+	^ self subclassResponsibility
+]
+
 { #category : #initialization }
 Cell >> initialize: newPosition [
 

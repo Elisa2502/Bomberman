@@ -9,3 +9,9 @@ Empty >> accept: entity [
 
 	^ entity visitEmptyCell: self
 ]
+
+{ #category : #accessing }
+Empty >> display [
+
+	^ 'Empty'
+]
