@@ -8,6 +8,35 @@ Class {
 	#category : #'Bomberman-entity'
 }
 
+{ #category : #initialization }
+EntityVisitor >> initializeName: newName position: newPosition [
+	self name: newName .
+	self position: newPosition .
+	
+]
+
+{ #category : #accessing }
+EntityVisitor >> name [
+
+	^ name
+]
+
+{ #category : #accessing }
+EntityVisitor >> name: newName [
+	name := newName .
+]
+
+{ #category : #accessing }
+EntityVisitor >> position [
+
+	^ position 
+]
+
+{ #category : #accessing }
+EntityVisitor >> position: newPosition [ 
+	position := newPosition 
+]
+
 { #category : #visiting }
 EntityVisitor >> visitBreakableWall: cell [
 	^ self subclassResponsibility 
