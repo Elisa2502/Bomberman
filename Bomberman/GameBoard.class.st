@@ -14,6 +14,11 @@ GameBoard >> Width [
  ^ width 
 ]
 
+{ #category : #initialization }
+GameBoard >> board [
+	^ board 
+]
+
 { #category : #'as yet unclassified' }
 GameBoard >> configureGrid [
 	
