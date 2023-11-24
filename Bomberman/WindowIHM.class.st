@@ -1,9 +1,8 @@
 Class {
 	#name : #WindowIHM,
-	#superclass : #BlElement,
+	#superclass : #BlOSpace,
 	#instVars : [
-		'grid',
-		'window'
+		'grid'
 	],
 	#category : #'Bomberman-vue'
 }
@@ -25,13 +24,10 @@ WindowIHM >> cell [
 { #category : #'as yet unclassified' }
 WindowIHM >> createWindow [
 	"Cree la fenetre"
-
-	| aSpace |
-	aSpace := BlOSpace new.
-	aSpace title: 'Bomberman'.
-	aSpace extent: World bounds extent.
 	
-	^ aSpace.
+	self title: 'Bomberman'.
+	self extent: World bounds extent.
+	
 ]
 
 { #category : #factory }
@@ -57,13 +53,14 @@ WindowIHM >> horizontal [
 
 { #category : #initialization }
 WindowIHM >> initialize [
-	window  := self createWindow .
+	super initialize.
+	self createWindow .
 	grid := self horizontal.
-	window addChild: grid.
+	self addChild: grid.
 ]
 
 { #category : #accessing }
-WindowIHM >> main [ 
+WindowIHM >> testVue [ 
 	"main qui fait tourner le jeu"
 	|player board positionPlayer|
 	positionPlayer := Position new.
@@ -74,16 +71,8 @@ WindowIHM >> main [
 	board := GameBoard new .
 	board initialize.
 	
-
-	
 	self initialize .
-	(grid children at: 1) show.
+	(grid children at: 1) background: Color blue.
+	self show.
 	
-	"""window show."""
-	
-]
-
-{ #category : #'host space - displaying' }
-WindowIHM >> show [ 
-	window show.
 ]

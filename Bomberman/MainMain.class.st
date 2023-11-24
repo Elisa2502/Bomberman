@@ -1,12 +1,18 @@
 Class {
 	#name : #MainMain,
 	#superclass : #Object,
+	#instVars : [
+		'board',
+		'player',
+		'vue'
+	],
 	#category : #'Bomberman-controleur'
 }
 
 { #category : #accessing }
-MainMain >> main [ 
-	|vue board player position|
+MainMain >> initialize [ 
+	|position|
+	super initialize.
 	
 	board := GameBoard new .
 	board initialize .
@@ -18,7 +24,19 @@ MainMain >> main [
 	
 	vue := WindowIHM new .
 	vue initialize .
+	
+	
+	
+	
+]
+
+{ #category : #accessing }
+MainMain >> main [ 
+	self initialize.
 	vue show.
+	[true] whileTrue: [
+    
+].
 	
 	
 	
