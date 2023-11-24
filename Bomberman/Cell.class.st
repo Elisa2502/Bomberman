@@ -2,7 +2,8 @@ Class {
 	#name : #Cell,
 	#superclass : #Object,
 	#instVars : [
-		'position'
+		'position',
+		'state'
 	],
 	#category : #'Bomberman-board'
 }
@@ -10,7 +11,7 @@ Class {
 { #category : #visiting }
 Cell >> accept: entity [
 
-	^ self subclassResponsibility
+	^ self state accept: entity atPos: self position
 ]
 
 { #category : #accessing }
@@ -25,6 +26,13 @@ Cell >> initialize: newPosition [
 	self position: position
 ]
 
+{ #category : #initialization }
+Cell >> initialize: newPosition state: newState [
+
+	self position: position.
+	self state: newState
+]
+
 { #category : #accessing }
 Cell >> position [
 
@@ -35,4 +43,16 @@ Cell >> position [
 Cell >> position: newPosition [
 
 	position := newPosition
+]
+
+{ #category : #accessing }
+Cell >> state [
+
+	^ state
+]
+
+{ #category : #accessing }
+Cell >> state: newState [
+
+	state := newState
 ]

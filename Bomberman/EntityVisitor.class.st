@@ -38,18 +38,18 @@ EntityVisitor >> position: newPosition [
 ]
 
 { #category : #visiting }
-EntityVisitor >> visitBreakableWall: cell [
+EntityVisitor >> visitBreakableCellState: myState atPos: cellPos [
 	^ self subclassResponsibility 
 
 ]
 
 { #category : #visiting }
-EntityVisitor >> visitEmptyCell: cell [
+EntityVisitor >> visitSimpleCellState: state atPos: cellPos [
 	^ self subclassResponsibility 
 ]
 
 { #category : #visiting }
-EntityVisitor >> visitWallCell: cell [
+EntityVisitor >> visitWallCellState: state atPos: cellPos [
 	^ self subclassResponsibility 
 
 ]

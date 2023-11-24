@@ -56,14 +56,14 @@ GameBoard >> configureGrid [
 { #category : #'as yet unclassified' }
 GameBoard >> configureGrid2 [ 
 
-        grid := { {Wall. Wall. Wall. Wall. Wall. Wall. Wall. Wall}.
-                   {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                   {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                   {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                   {Wall. Wall.  BreakableWall. BreakableWall. Empty. Empty. BreakableWall. Wall.}.
-                   {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                   {Wall. Wall. Empty. Empty. BreakableWall. BreakableWall. BreakableWall. Wall.}.
-                  {Wall. Wall. Wall. Wall. Wall. Wall. Wall. Wall.}.
+        grid := { {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState}.
+                   {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+                   {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+                   {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+                   {WallCellState. WallCellState.  BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState.}.
+                   {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+                   {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+                  {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState.}.
 				 }.
 
         self populateBoard.
@@ -75,10 +75,10 @@ GameBoard >> createCellFromSymbol: aSymbol [
 
         | cellClass |
         cellClass := {
-            #('Wall') -> Wall.
-            #('Empty') -> Empty.
-            #('BreakableWall') -> BreakableWall.
-        } at: aSymbol ifAbsent: [ Empty ].
+            #('Wall') -> WallCellState.
+            #('Empty') -> SimpleCellState.
+            #('BreakableWall') -> BreakableCellState.
+        } at: aSymbol ifAbsent: [ SimpleCellState ].
 
         ^ cellClass new.
 ]
