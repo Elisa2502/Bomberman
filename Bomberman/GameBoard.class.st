@@ -11,11 +11,6 @@ Class {
 }
 
 { #category : #initialization }
-GameBoard >> Width [
- ^ width 
-]
-
-{ #category : #initialization }
 GameBoard >> board [
 	^ board 
 ]
@@ -126,11 +121,16 @@ GameBoard >> populateBoard [
          grid withIndexDo: [ :row :rowIndex |
             row withIndexDo: [ :cellClass :colIndex |
                 | cell |
-                cell := cellClass new.
-                cell position: colIndex @ rowIndex.
+                cell := Cell new.
+					cell initialize: colIndex @ rowIndex state: SimpleCellState.
                 board add: cell.
             ].
         ].
+]
+
+{ #category : #initialization }
+GameBoard >> width [
+ ^ width 
 ]
 
 { #category : #initialization }

@@ -9,7 +9,7 @@ Class {
 
 { #category : #'examples - setup' }
 WindowIHM >> cell [
-
+	"""create one cell"""
 	| element border|
 	border := BlBorder paint: Color black .
 	element := BlElement new
@@ -22,8 +22,33 @@ WindowIHM >> cell [
 ]
 
 { #category : #'as yet unclassified' }
+WindowIHM >> createGrid [
+	|game ligne colonne|
+	
+	game := GameBoard new .
+	game initialize.
+	
+	grid := self horizontal.
+	
+	ligne := game width.
+	colonne := game height.
+	1 to: ligne do: [ :i | 
+		1 to: colonne do: [ :j |
+			(grid children at: i*ligne + j) background: ((game board at: i at: j) state) color.
+		]. 
+	].
+	^ grid
+	
+
+
+
+
+
+]
+
+{ #category : #'as yet unclassified' }
 WindowIHM >> createWindow [
-	"Cree la fenetre"
+	"Create a window"
 	
 	self title: 'Bomberman'.
 	self extent: World bounds extent.
@@ -32,7 +57,7 @@ WindowIHM >> createWindow [
 
 { #category : #factory }
 WindowIHM >> horizontal [
-
+	"""Create a grid"""
 	|layer taille|
 	taille := 64.
 	layer := BlElement new 
@@ -53,15 +78,17 @@ WindowIHM >> horizontal [
 
 { #category : #initialization }
 WindowIHM >> initialize [
+	"""Initialize View"""
 	super initialize.
 	self createWindow .
 	grid := self horizontal.
+	"""grid := self createGrid."""
 	self addChild: grid.
 ]
 
 { #category : #accessing }
 WindowIHM >> testVue [ 
-	"main qui fait tourner le jeu"
+	"Bidoullage"
 	|player board positionPlayer|
 	positionPlayer := Position new.
 	positionPlayer initializeX: 0 Y: 0 .

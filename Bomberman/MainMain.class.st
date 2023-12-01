@@ -11,6 +11,7 @@ Class {
 
 { #category : #accessing }
 MainMain >> initialize [ 
+	"""Initialize controler"""
 	|position|
 	super initialize.
 	
@@ -32,6 +33,7 @@ MainMain >> initialize [
 
 { #category : #accessing }
 MainMain >> main [ 
+	"""Main for play"""
 	self initialize.
 	vue show.
 	[true] whileTrue: [

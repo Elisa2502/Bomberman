@@ -11,6 +11,12 @@ WallCellState >> accept: entity atPos: cellPos [
 ]
 
 { #category : #accessing }
+WallCellState >> color [
+
+	^ Color black
+]
+
+{ #category : #accessing }
 WallCellState >> display [
 
 	^ 'Wall'

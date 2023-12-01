@@ -11,6 +11,12 @@ SimpleCellState >> accept: entity atPos: cellPos [
 ]
 
 { #category : #accessing }
+SimpleCellState >> color [
+
+	^ Color pink
+]
+
+{ #category : #accessing }
 SimpleCellState >> display [
 
 	^ 'Empty'
