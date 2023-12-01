@@ -23,7 +23,7 @@ WindowIHM >> cell [
 
 { #category : #'as yet unclassified' }
 WindowIHM >> createGrid [
-	|game ligne colonne|
+	|game ligne colonne cell ctp|
 	
 	game := GameBoard new .
 	game initialize.
@@ -32,9 +32,17 @@ WindowIHM >> createGrid [
 	
 	ligne := game width.
 	colonne := game height.
-	1 to: ligne do: [ :i | 
-		1 to: colonne do: [ :j |
-			(grid children at: i*ligne + j) background: ((game board at: i at: j) state) color.
+	ctp := 1.
+	1 to: (ligne) do: [ :i | 
+		1 to: (colonne) do: [ :j |
+			"""(grid children at: i*ligne + j) background: ((game board at: i at: j) state) color."""
+
+			cell := (game cellX: i Y: j).
+			"""(grid children at: i*ligne + j) background: (cell color)."""
+			"""child := (i * ligne) + j.
+			child > 64 ifTrue: [ child  ]"""
+			(grid children at: ctp) background: (cell color).
+			ctp := ctp + 1.
 		]. 
 	].
 	^ grid
@@ -81,8 +89,8 @@ WindowIHM >> initialize [
 	"""Initialize View"""
 	super initialize.
 	self createWindow .
-	grid := self horizontal.
-	"""grid := self createGrid."""
+	"""grid := self horizontal."""
+	grid := self createGrid.
 	self addChild: grid.
 ]
 
