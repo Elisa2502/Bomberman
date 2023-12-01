@@ -4,6 +4,12 @@ Class {
 	#category : #'Bomberman-board'
 }
 
+{ #category : #accessing }
+WallCellState class >> color [
+
+	^ Color black
+]
+
 { #category : #visiting }
 WallCellState >> accept: entity atPos: cellPos [
 

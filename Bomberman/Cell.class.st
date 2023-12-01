@@ -15,6 +15,11 @@ Cell >> accept: entity [
 ]
 
 { #category : #accessing }
+Cell >> color [
+	^ self state color
+]
+
+{ #category : #accessing }
 Cell >> display [
 
 	^ self subclassResponsibility

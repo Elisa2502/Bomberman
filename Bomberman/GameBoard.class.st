@@ -36,6 +36,11 @@ GameBoard >> cellRepresentationFor: aCell [
 ]
 
 { #category : #'as yet unclassified' }
+GameBoard >> cellX: abs Y: ord [
+	^ (board at: abs) .
+]
+
+{ #category : #'as yet unclassified' }
 GameBoard >> configureGrid [
 	
         1 to: width do: [ :col |

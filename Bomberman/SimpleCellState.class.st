@@ -4,6 +4,11 @@ Class {
 	#category : #'Bomberman-board'
 }
 
+{ #category : #accessing }
+SimpleCellState class >> color [ 
+	^ Color pink
+]
+
 { #category : #visiting }
 SimpleCellState >> accept: entity atPos: cellPos [
 
@@ -12,7 +17,6 @@ SimpleCellState >> accept: entity atPos: cellPos [
 
 { #category : #accessing }
 SimpleCellState >> color [
-
 	^ Color pink
 ]
 

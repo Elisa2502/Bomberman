@@ -4,6 +4,12 @@ Class {
 	#category : #'Bomberman-board'
 }
 
+{ #category : #accessing }
+BreakableCellState class >> color [ 
+
+	^ Color lightGray
+]
+
 { #category : #visiting }
 BreakableCellState >> accept: entity atPos: cellPos [
 
