@@ -20,21 +20,6 @@ GameBoard >> board: anBoard [
 	 board := anBoard  
 ]
 
-{ #category : #initialization }
-GameBoard >> cellRepresentationFor: aCell [
-    "Retourne une représentation visuelle pour la cellule donnée."
-
-    | representation |
-    representation := aCell display.
-
-    "Utilisation de caractères spéciaux pour créer une apparence tridimensionnelle"
-    (representation = 'Wall') ifTrue: [^ '█'].
-    (representation = 'Empty') ifTrue: [^ ' '].
-    (representation = 'BreakableWall') ifTrue: [^ '░'].
-
-    ^ ' '.
-]
-
 { #category : #'as yet unclassified' }
 GameBoard >> cellX: abs Y: ord [
 	^ (board at: abs) .
@@ -55,6 +40,22 @@ GameBoard >> configureGrid [
 
 { #category : #'as yet unclassified' }
 GameBoard >> configureGrid2 [ 
+
+        grid := { {WallCellState. SimpleCellState. WallCellState. WallCellState. BreakableCellState. BreakableCellState. WallCellState. SimpleCellState.  }.
+                  {SimpleCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+                  {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  {WallCellState. WallCellState.  BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState. }.
+                  {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. }. 
+				 }.
+
+        self populateBoard.
+]
+
+{ #category : #'as yet unclassified' }
+GameBoard >> configureGrid3 [ 
 
         grid := { {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. }.
                    {WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState.}.
@@ -77,31 +78,19 @@ GameBoard >> configureGrid2 [
         self populateBoard.
 ]
 
-{ #category : #initialization }
-GameBoard >> createCellFromSymbol: aSymbol [
-        "Crée une instance de cellule en fonction du symbole fourni."
-
-        | cellClass |
-        cellClass := {
-            #('Wall') -> WallCellState.
-            #('Empty') -> SimpleCellState.
-            #('BreakableWall') -> BreakableCellState.
-        } at: aSymbol ifAbsent: [ SimpleCellState ].
-
-        ^ cellClass new.
-]
-
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 GameBoard >> displayBoard [
-
-    board withIndexDo: [ :cell :index |
-        | positionX positionY |
-        positionX := cell position x.
-        positionY := cell position y.
-
-        Transcript nextPutAll: (self cellRepresentationFor: cell).
-        (index \\ width = 0) ifTrue: [Transcript cr]. "Nouvelle ligne après chaque ligne complète"
+    "Affiche le contenu actuel du plateau sous forme de matrice"
+    1 to: 8 do: [ :rowIndex |
+        1 to:  8 do: [ :colIndex |
+            | cell |
+            cell := (board at: ((rowIndex - 1) * 8) + colIndex).
+            Transcript show: (cell state printString), ' '.
+        ].
+        Transcript cr.
     ].
+
+
 ]
 
 { #category : #initialization }
@@ -122,8 +111,8 @@ GameBoard >> height: aNumber [
 { #category : #initialization }
 GameBoard >> initialize [
     board := OrderedCollection new.
-    height := 16.
-    width := 16.
+    height := 8.
+    width := 8.
     self configureGrid2.
 
 ]
@@ -132,11 +121,14 @@ GameBoard >> initialize [
 GameBoard >> populateBoard [
 
 	grid withIndexDo: [ :row :rowIndex |
-		row withIndexDo: [ :cellClass :colIndex |
+		row  withIndexDo: [ :cellClass :colIndex |
 			| cell |
 			cell := Cell new.
-			cell initialize: colIndex @ rowIndex state: cellClass new.
-			board add: cell ] ]
+			cell initialize: colIndex @ rowIndex  state: cellClass new.
+			board add: cell.
+		]
+	]
+
 ]
 
 { #category : #initialization }
