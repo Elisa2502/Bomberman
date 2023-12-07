@@ -21,37 +21,25 @@ WindowIHM >> cell [
 	^ element
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 WindowIHM >> createGrid [
-	|game ligne colonne cell ctp|
+	"""Create a grid"""
+	|layer taille|
+	taille := 64.
+	layer := BlElement new 
+					background: Color transparent;
+					layout: (BlGridLayout createGrid 
+								columnCount: 8;
+								cellSpacing: 2);
+					constraintsDo: [ :c |
+			         c createGrid matchParent.
+			         c vertical fitContent ].
 	
-	game := GameBoard new .
-	game initialize.
+	1 to: taille do: [ :i| 
+		layer addChild: self cell].
+	^ layer.
 	
-	grid := self horizontal.
 	
-	ligne := game width.
-	colonne := game height.
-	ctp := 1.
-	1 to: (ligne) do: [ :i | 
-		1 to: (colonne) do: [ :j |
-			"""(grid children at: i*ligne + j) background: ((game board at: i at: j) state) color."""
-
-			cell := (game cellX: i Y: j).
-			"""(grid children at: i*ligne + j) background: (cell color)."""
-			"""child := (i * ligne) + j.
-			child > 64 ifTrue: [ child  ]"""
-			(grid children at: ctp) background: (cell color).
-			ctp := ctp + 1.
-		]. 
-	].
-	^ grid
-	
-
-
-
-
-
 ]
 
 { #category : #'as yet unclassified' }
@@ -63,25 +51,9 @@ WindowIHM >> createWindow [
 	
 ]
 
-{ #category : #factory }
-WindowIHM >> horizontal [
-	"""Create a grid"""
-	|layer taille|
-	taille := 64.
-	layer := BlElement new 
-					background: Color transparent;
-					layout: (BlGridLayout horizontal 
-								columnCount: 8;
-								cellSpacing: 2);
-					constraintsDo: [ :c |
-			         c horizontal matchParent.
-			         c vertical fitContent ].
-	
-	1 to: taille do: [ :i| 
-		layer addChild: self cell].
-	^ layer.
-	
-	
+{ #category : #accessing }
+WindowIHM >> grid [
+	^ grid
 ]
 
 { #category : #initialization }
@@ -89,8 +61,7 @@ WindowIHM >> initialize [
 	"""Initialize View"""
 	super initialize.
 	self createWindow .
-	"""grid := self horizontal."""
-	grid := self createGrid.
+	grid :=  self createGrid.
 	self addChild: grid.
 ]
 
