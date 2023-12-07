@@ -25,7 +25,7 @@ WindowIHM >> cell [
 WindowIHM >> createGrid [
 	"""Create a grid"""
 	|layer taille|
-	taille := 64.
+	"""taille := 64.
 	layer := BlElement new 
 					background: Color transparent;
 					layout: (BlGridLayout createGrid 
@@ -37,7 +37,23 @@ WindowIHM >> createGrid [
 	
 	1 to: taille do: [ :i| 
 		layer addChild: self cell].
-	^ layer.
+	^ layer."""
+	taille := 8.
+	layer := BlElement new
+                    background: Color transparent;
+                    layout: (BlGridLayout createGrid 
+                                rowCount: taille;
+                                columnCount: taille;
+                                cellSpacing: 2);
+                    constraintsDo: [ :c |
+                        c createGrid matchParent.
+                        c vertical fitContent ].
+
+1 to: taille do: [ :x |
+    1 to: taille do: [ :y |
+        layer addChild: (self cell) ]].
+
+^ layer.
 	
 	
 ]
@@ -63,6 +79,7 @@ WindowIHM >> initialize [
 	self createWindow .
 	grid :=  self createGrid.
 	self addChild: grid.
+	"""(grid children at: 1@1) background: Color blue."""
 ]
 
 { #category : #accessing }

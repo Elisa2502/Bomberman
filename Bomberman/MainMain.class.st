@@ -58,7 +58,8 @@ MainMain >> synchBoard [
 	1 to: (ligne) do: [ :i | 
 		1 to: (colonne) do: [ :j |
 			cell := (board cellX: i Y: j).
-			(view grid children at: ctp) background: (cell color).
+			"""(view grid children at: ctp) background: (cell color)."""
+			(view grid at: (i@j)) background: (cell color).
 			ctp := ctp + 1.
 		]. 
 	].
