@@ -28,12 +28,12 @@ WindowIHM >> createGrid [
 	taille := 8.
 	layer := BlElement new
                     background: Color transparent;
-                    layout: (BlGridLayout createGrid 
+                    layout: (BlGridLayout horizontal 
                                 rowCount: taille;
                                 columnCount: taille;
                                 cellSpacing: 2);
                     constraintsDo: [ :c |
-                        c createGrid matchParent.
+                        c horizontal matchParent.
                         c vertical fitContent ].
 
 1 to: taille do: [ :x |
