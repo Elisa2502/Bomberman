@@ -25,7 +25,7 @@ WindowIHM >> cell [
 WindowIHM >> createGrid [
 	"""Create a grid"""
 	|layer taille|
-	"""taille := 64.
+	taille := 64.
 	layer := BlElement new 
 					background: Color transparent;
 					layout: (BlGridLayout createGrid 
@@ -37,8 +37,8 @@ WindowIHM >> createGrid [
 	
 	1 to: taille do: [ :i| 
 		layer addChild: self cell].
-	^ layer."""
-	taille := 8.
+	^ layer.
+	"""taille := 8.
 	layer := BlElement new
                     background: Color transparent;
                     layout: (BlGridLayout createGrid 
@@ -53,7 +53,7 @@ WindowIHM >> createGrid [
     1 to: taille do: [ :y |
         layer addChild: (self cell) ]].
 
-^ layer.
+^ layer."""
 	
 	
 ]
