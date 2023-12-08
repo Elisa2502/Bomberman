@@ -39,7 +39,7 @@ MainMain >> main [
 	self initialize.
 	view show.
 	"""[true] whileTrue: [
-    
+    yolo ?
 ]."""
 	
 	
