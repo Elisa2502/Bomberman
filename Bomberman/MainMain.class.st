@@ -50,16 +50,16 @@ MainMain >> main [
 { #category : #'as yet unclassified' }
 MainMain >> synchBoard [ 
 	"""synch back board with view board"""
-	|ligne colonne cell ctp|
+	|ligne colonne cell ctp index|
 	
 	ligne := board width.
 	colonne := board height.
 	ctp := 1.
 	1 to: (ligne) do: [ :i | 
 		1 to: (colonne) do: [ :j |
-			cell := (board cellX: i Y: j).
-			"""(view grid children at: ctp) background: (cell color)."""
-			(view grid at: (i@j)) background: (cell color).
+			cell := board cellX: i Y: j.
+			index := ((i - 1) * colonne) + j.
+			(view grid children at:ctp) background: (cell color).
 			ctp := ctp + 1.
 		]. 
 	].
