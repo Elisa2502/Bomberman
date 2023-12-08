@@ -18,15 +18,15 @@ MainMain >> initialize [
 	board := GameBoard new .
 	board initialize .
 	
-	view := WindowIHM new .
-	view initialize .
-	
-	self synchBoard .
-	
 	position := Position new.
 	position initializeX: 0 Y: 0.
 	player := PlayerVisitor new .
 	player initializeName: 'Player' position: position.
+	
+	view := WindowIHM new .
+	view initialize .
+	
+	self synchBoard .
 	
 	
 	
@@ -63,4 +63,8 @@ MainMain >> synchBoard [
 			ctp := ctp + 1.
 		]. 
 	].
+	index := (((player position x)) * colonne) + (player position y) + 1.
+	(view grid children at: index) background: (player color).
+
+	
 ]
