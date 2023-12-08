@@ -29,7 +29,6 @@ GameBoard >> cellX: abs Y: ord [
 
 { #category : #'as yet unclassified' }
 GameBoard >> configureGrid [
-	
         1 to: width do: [ :col |
             1 to: height do: [ :row |
                 | cell |

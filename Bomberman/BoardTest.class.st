@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #tests }
-BoardTest >> testPopulateBoard [
+BoardTest >> testCellAtXY [
     | game gridConfigureGrid2 actualBoard |
     game := GameBoard new.
     game configureGrid2.
@@ -25,16 +25,47 @@ BoardTest >> testPopulateBoard [
     }.
 
     actualBoard := game board.
-	
-    gridConfigureGrid2 withIndexDo: [ :rowIndex :row |
-        row withIndexDo: [ :cellClass :colIndex |
-	
-            | expectedState actualCell |
-            expectedState := cellClass new.
-            actualCell := game cellX: rowIndex  Y: colIndex. 
 
-            self assert: (actualCell state class equals: expectedState class).
+    1 to: game height do: [ :rowIndex |
+        (gridConfigureGrid2 at: rowIndex) withIndexDo: [ :cellClass :colIndex |
+            | expectedCell actualCell |
+            expectedCell := game cellX: colIndex Y: rowIndex.
+            actualCell := (actualBoard at: ((rowIndex - 1) * game height + colIndex)).
+            
+            self assert: actualCell equals:  expectedCell.
         ].
     ].
 
+]
+
+{ #category : #tests }
+BoardTest >> testPopulateBoard [
+
+	| game gridConfigureGrid2 actualBoard |
+	game := GameBoard new.
+	
+
+	gridConfigureGrid2 := {
+        { WallCellState. SimpleCellState. WallCellState. WallCellState. BreakableCellState. BreakableCellState. WallCellState. SimpleCellState }.
+        { SimpleCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+        { WallCellState. WallCellState. BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState }.
+        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+        { WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState }.
+    }.
+			
+	game configureGrid2.
+	actualBoard := game board.
+
+	1 to: game height do: [ :rowIndex |
+		(gridConfigureGrid2 at: rowIndex) withIndexDo: [ :cellClass :colIndex |
+			| actualCellInBoard cell |
+			cell := Cell new.
+			cell initialize: colIndex @ rowIndex state: cellClass new.
+
+			actualCellInBoard := game cellX: colIndex Y: rowIndex.
+
+			self assert: actualCellInBoard state class equals: cell state class ] ]
 ]
