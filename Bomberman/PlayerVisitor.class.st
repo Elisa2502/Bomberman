@@ -4,6 +4,18 @@ Class {
 	#category : #'Bomberman-entity'
 }
 
+{ #category : #accessing }
+PlayerVisitor class >> color [ 
+
+	^ Color blue
+]
+
+{ #category : #accessing }
+PlayerVisitor >> color [
+
+	^ Color blue 
+]
+
 { #category : #visiting }
 PlayerVisitor >> visitBreakableCellState: cell atPos: cellPos [
 	"You should not pass if I not break"
