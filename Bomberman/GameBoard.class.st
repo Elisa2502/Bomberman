@@ -22,7 +22,9 @@ GameBoard >> board: anBoard [
 
 { #category : #'as yet unclassified' }
 GameBoard >> cellX: abs Y: ord [
-	^ (board at: abs) .
+	|index|
+	index := ((ord - 1) * self height) + abs.
+	^ (board at: index).
 ]
 
 { #category : #'as yet unclassified' }
