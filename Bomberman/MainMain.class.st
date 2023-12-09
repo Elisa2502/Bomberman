@@ -26,6 +26,8 @@ MainMain >> initialize [
 	view := WindowIHM new .
 	view initialize .
 	
+	MainEvent new initialize.
+	
 	self synchBoard .
 	
 	
