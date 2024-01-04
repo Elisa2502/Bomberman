@@ -36,8 +36,8 @@ WindowIHM >> createGrid [
                         c horizontal matchParent.
                         c vertical fitContent ].
 
-1 to: taille do: [ :x |
-    1 to: taille do: [ :y |
+0 to: (taille - 1) do: [ :x |
+    0 to: (taille - 1) do: [ :y |
         layer addChild: (self cell) ]].
 
 ^ layer.
@@ -66,5 +66,4 @@ WindowIHM >> initialize [
 	self createWindow .
 	grid :=  self createGrid.
 	self addChild: grid.
-	"""(grid children at: 1@1) background: Color blue."""
 ]

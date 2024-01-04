@@ -20,10 +20,15 @@ GameBoard >> board: anBoard [
 	 board := anBoard  
 ]
 
+{ #category : #accessing }
+GameBoard >> cell: idx [
+	^ (board at: idx).
+]
+
 { #category : #'as yet unclassified' }
 GameBoard >> cellX: abs Y: ord [
 	|index|
-	index := ((ord - 1) * self height) + abs.
+	index := (abs * self height) + (ord + 1).
 	^ (board at: index).
 ]
 
@@ -56,6 +61,22 @@ GameBoard >> configureGrid2 [
 ]
 
 { #category : #'as yet unclassified' }
+GameBoard >> configureGrid22 [
+
+	  grid := { {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState.  }.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState.  BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. }. 
+				 }.
+
+        self populateBoard.
+]
+
+{ #category : #'as yet unclassified' }
 GameBoard >> configureGrid3 [ 
 
         grid := { {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. }.
@@ -82,6 +103,7 @@ GameBoard >> configureGrid3 [
 { #category : #'as yet unclassified' }
 GameBoard >> displayBoard [
     "Affiche le contenu actuel du plateau sous forme de matrice"
+	
     1 to: 8 do: [ :rowIndex |
         1 to:  8 do: [ :colIndex |
             | cell |
@@ -114,7 +136,7 @@ GameBoard >> initialize [
     board := OrderedCollection new.
     height := 8.
     width := 8.
-    self configureGrid2.
+    self configureGrid22.
 
 ]
 

@@ -34,7 +34,7 @@ EntityVisitor >> position [
 
 { #category : #accessing }
 EntityVisitor >> position: newPosition [ 
-	position := newPosition 
+	position := newPosition.
 ]
 
 { #category : #visiting }

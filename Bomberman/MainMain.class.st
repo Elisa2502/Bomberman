@@ -12,12 +12,15 @@ Class {
 { #category : #'as yet unclassified' }
 MainMain >> downEvent [
 	"""Effect for down event"""
-	"""|posPlayer cellPlayer|"""
+	|posPlayer cellPlayer newCell|
 	CommandLineUIManager default alert: 'DOWN SELECTED'.
 	
-	"""posPlayer := player position.
-	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y)."""
-	
+	posPlayer := player position.
+	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
+	newCell := board cellX: (posPlayer x) Y: (posPlayer y + 1).
+	player position: ((newCell state) accept: player atPos: (newCell position)).
+	self synchBoard.
+	view show.
 ]
 
 { #category : #accessing }
@@ -30,7 +33,7 @@ MainMain >> initialize [
 	board initialize .
 	
 	position := Position new.
-	position initializeX: 0 Y: 0.
+	position initializeX: 1 Y: 1.
 	player := PlayerVisitor new .
 	player initializeName: 'Player' position: position.
 	
@@ -55,14 +58,15 @@ MainMain >> leftEvent [
 { #category : #accessing }
 MainMain >> main [ 
 	"""Main for play"""
+
+	"""self initialize.
+	view show."""
 	
 	self initialize.
 	view show.
-		
+	
 	view when: BlKeyUpEvent 
 		do: [ :event | self manageEvent: event ].
-				
-
 	
 	
 ]
@@ -91,18 +95,22 @@ MainMain >> rightEvent [
 { #category : #'as yet unclassified' }
 MainMain >> synchBoard [ 
 	"""synch back board with view board"""
-	|ligne colonne cell index|
+	|ligne colonne cell index posPlayerX posPlayerY|
 	
 	ligne := board width.
 	colonne := board height.
-	1 to: (ligne) do: [ :i | 
-		1 to: (colonne) do: [ :j |
+	0 to: (ligne - 1) do: [ :i | 
+		0 to: (colonne - 1) do: [ :j |
 			cell := board cellX: i Y: j.
-			index := ((i - 1) * colonne) + j.
+			index := (i * colonne) + (j + 1).
 			(view grid children at:index) background: (cell color).
 		]. 
 	].
-	index := (((player position x)) * colonne) + (player position y) + 1.
+	
+	"""index := (((player position) x) * colonne) + ((player position) y) + 1."""
+	posPlayerX := player position x.
+	posPlayerY := player position y.
+	index := (posPlayerX * colonne) + posPlayerY + 1.
 	(view grid children at: index) background: (player color).
 
 	
