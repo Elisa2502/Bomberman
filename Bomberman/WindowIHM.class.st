@@ -68,21 +68,3 @@ WindowIHM >> initialize [
 	self addChild: grid.
 	"""(grid children at: 1@1) background: Color blue."""
 ]
-
-{ #category : #accessing }
-WindowIHM >> testVue [ 
-	"Bidoullage"
-	|player board positionPlayer|
-	positionPlayer := Position new.
-	positionPlayer initializeX: 0 Y: 0 .
-	player := EntityVisitor new .
-	player initializeName: 'player' position: positionPlayer.
-	
-	board := GameBoard new .
-	board initialize.
-	
-	self initialize .
-	(grid children at: 1) background: Color blue.
-	self show.
-	
-]
