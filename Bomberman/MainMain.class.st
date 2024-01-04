@@ -17,8 +17,8 @@ MainMain >> downEvent [
 	
 	posPlayer := player position.
 	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
-	newCell := board cellX: (posPlayer x) Y: (posPlayer y + 1).
-	player position: ((newCell state) accept: player atPos: (newCell position)).
+	newCell := board cellX: (posPlayer x) Y: (posPlayer y).
+	(newCell state) accept: player atPos: (newCell position).
 	self synchBoard.
 	view show.
 ]
