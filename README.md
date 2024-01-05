@@ -1,14 +1,17 @@
 # Bomberman
 
-@author :   
+Auteurs :   
 Adriaenssens Elisa elisa.adriaenssens.etu@univ-lille.fr   
 Carpentier Madeline madeline.carpentier.etu@univ-lille.fr   
 Sellah Rabah rabah.sellah.etu@univ-lille.fr   
 
 ## Projet
 ### Description
+  L'objectif est de faire un jeu bomberman fonctionnel. Donc on doit pouvoir se deplacer et poser des bombes, avec un temps qui défile. Comme objectif nous devons fais un code ouvert à l'évolution avec des design pattern. Il nous faut également des tests pour prouver que notre application est fonctionnel. Un UML, un journal de bord.
 ### UML
+  Voici l'évolution de notre UML au fur et à mesure de l'avancé du projet.
 ### Probléme rencontré
+  Nous avons rencontré différents probléme notement sur la conception de l'application, la répartition des tâches et la compréhension des consignes.
 
 ## Lancement du projet
   Voici notre petit tutoriel pour lancer le projet. Vous pouvez evidement y contribuer.
