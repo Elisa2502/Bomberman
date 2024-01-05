@@ -102,14 +102,16 @@ MainMain >> manageEvent: anEvent [
 
 { #category : #'as yet unclassified' }
 MainMain >> placeBombEvent [ 
-	|posPlayer cellPlayer posCell|
+	|posPlayer cellPlayer posCell bomb|
 	
 	posPlayer := player position.
 	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
 	posCell := Position new.
 	posCell initializeX: posPlayer x Y: posPlayer y .
 	
-	cellPlayer state: BombCellState new.
+	bomb := BombCellState new.
+	cellPlayer state: bomb initialize.
+	cellPlayer state startCountdown: cellPlayer.
 	(cellPlayer state) accept: player atPos: (posCell).
 	
 	self synchBoard.

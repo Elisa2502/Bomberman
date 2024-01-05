@@ -30,21 +30,26 @@ BombCellState >> countdown: count [
 ]
 
 { #category : #'as yet unclassified' }
-BombCellState >> explode [
-	CommandLineUIManager default alert: 'EXPLODE'.
+BombCellState >> explode: cell [
+	"""The bomb explodes"""
+	cell state: SimpleCellState new.
+	
 ]
 
 { #category : #accessing }
 BombCellState >> initialize [
 	"""inialize a bomb"""
 	super initialize.
-	self countdown: 5 .
+	self countdown: 2 .
 	
 	
 ]
 
 { #category : #'as yet unclassified' }
-BombCellState >> startCountdown [
-
-	
+BombCellState >> startCountdown: cell [
+	"""Start countdown before explodes"""
+[ countdown to: 0 by: -1 do: [ :i |
+		(Delay forSeconds: 1) wait. 
+		]. self explode: cell. 
+	] fork.
 ]
