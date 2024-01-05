@@ -1,0 +1,101 @@
+@startuml
+
+package board {
+    abstract Cell {
+        - position : Position
+        - state : CellState
+        + initialize(pos : Position, state : CellState)
+        + accept(entity : Entity)
+        + color() : Color
+    }
+
+    interface CellState {
+        + accept(entity : Entity, pos : Position)
+        + color() : Color
+    }
+
+    class BombCellState {
+        + accept(entity : Entity, pos : Position)
+        + color() : Color
+        + startCountDown(cell : Cell)
+        + explode(cell : Cell)
+    }
+
+    class BreakableCellState {
+        + accept(entity : Entity, pos : Position)
+        + color() : Color
+    }
+
+    class SimpleCellState {
+        + accept(entity : Entity, pos : Position)
+        + color() : Color
+    }
+
+    class WallCellState {
+        + accept(entity : Entity, pos : Position)
+        + color() : Color
+    }
+
+    class BoardGame {
+        - width : int
+        - height : int
+        - board : List<Cell>
+        - grid : cell[][]
+        + configureGrid()
+        + displayBoard()
+        + populatedBoard()
+    }
+
+    class Position {
+        - x : int
+        - y : int
+    }
+
+    CellState <-- BombCellState
+    CellState <-- BreakableCellState
+    CellState <-- SimpleCellState
+    CellState <-- WallCellState
+
+}
+
+package controleur{
+    class MainMain {
+        + downEvent()
+        + leftEvent()
+        + manageEvent(event : Event)
+        + placeBombEvent()
+        + rightEvent()
+        + synchBoard()
+        + upEvent()
+        + main()
+    }
+}
+
+package entity {
+    abstract EntityVisitor {
+        - name : String 
+        - position : Position 
+        + visitBombCellState(state : CellState, pos : Position)
+        + visitBreakableCellState(state : CellState, pos : Position)
+        + visitSimpleCellState(state : CellState, pos : Position)
+        + visitWallCellState(state : CellState, pos : Position)
+    }
+
+    class PlayerVisitor {
+        + visitBombCellState(state : CellState, pos : Position)
+        + visitBreakableCellState(state : CellState, pos : Position)
+        + visitSimpleCellState(state : CellState, pos : Position)
+        + visitWallCellState(state : CellState, pos : Position)
+    }
+
+    EntityVisitor <|-- PlayerVisitor
+}
+
+package vue {
+    class WindowIHM {
+        - grid : BlElement[][]
+        + cell()
+        + createGrid()
+        + createWindow
+    }
+}
