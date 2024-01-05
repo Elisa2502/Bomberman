@@ -12,13 +12,17 @@ Class {
 { #category : #'as yet unclassified' }
 MainMain >> downEvent [
 	"""Effect for down event"""
-	|posPlayer cellPlayer newCell|
-	CommandLineUIManager default alert: 'DOWN SELECTED'.
+	|posPlayer cellPlayer newCell posNewCell|
 	
 	posPlayer := player position.
 	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
-	newCell := board cellX: (posPlayer x) Y: (posPlayer y).
-	(newCell state) accept: player atPos: (newCell position).
+	
+	newCell := board cellX: (posPlayer x + 1) Y: (posPlayer y).
+	posNewCell := Position new.
+	posNewCell initializeX: posPlayer x + 1 Y: posPlayer y.
+	
+	(newCell state) accept: player atPos: (posNewCell).
+	
 	self synchBoard.
 	view show.
 ]
@@ -52,7 +56,19 @@ MainMain >> initialize [
 { #category : #'as yet unclassified' }
 MainMain >> leftEvent [
 	"""Effect for left event"""
-	CommandLineUIManager default alert: 'LEFT SELECTED'
+	|posPlayer cellPlayer newCell posNewCell|
+	
+	posPlayer := player position.
+	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
+	
+	newCell := board cellX: (posPlayer x) Y: (posPlayer y - 1).
+	posNewCell := Position new.
+	posNewCell initializeX: posPlayer x Y: posPlayer y - 1.
+	
+	(newCell state) accept: player atPos: (posNewCell).
+	
+	self synchBoard.
+	view show.
 ]
 
 { #category : #accessing }
@@ -89,7 +105,19 @@ MainMain >> manageEvent: anEvent [
 { #category : #'as yet unclassified' }
 MainMain >> rightEvent [
 	"""Effect for right event"""
-	CommandLineUIManager default alert: 'RIGHT SELECTED'
+	|posPlayer cellPlayer newCell posNewCell|
+	
+	posPlayer := player position.
+	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
+	
+	newCell := board cellX: (posPlayer x) Y: (posPlayer y + 1).
+	posNewCell := Position new.
+	posNewCell initializeX: posPlayer x Y: posPlayer y + 1.
+	
+	(newCell state) accept: player atPos: (posNewCell).
+	
+	self synchBoard.
+	view show.
 ]
 
 { #category : #'as yet unclassified' }
@@ -119,5 +147,17 @@ MainMain >> synchBoard [
 { #category : #accessing }
 MainMain >> upEvent [ 
 	"""Effect for up event"""
-	CommandLineUIManager default alert: 'UP SELECTED'
+	|posPlayer cellPlayer newCell posNewCell|
+	
+	posPlayer := player position.
+	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
+	
+	newCell := board cellX: (posPlayer x - 1) Y: (posPlayer y).
+	posNewCell := Position new.
+	posNewCell initializeX: posPlayer x - 1 Y: posPlayer y.
+	
+	(newCell state) accept: player atPos: (posNewCell).
+	
+	self synchBoard.
+	view show.
 ]

@@ -4,6 +4,12 @@ Class {
 	#category : #'Bomberman-board'
 }
 
+{ #category : #visiting }
+CellState >> accept: entity atPos: cellPos [
+
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 CellState >> color [
 	^ self subclassResponsibility

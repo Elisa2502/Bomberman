@@ -12,6 +12,12 @@ Class {
 Cell >> accept: entity [
 
 	^ self state accept: entity atPos: self position
+	
+	"""|pos|
+	pos := Position new.
+	pos initializeX: 2 Y: 1. 
+
+	^ self state accept: entity atPos: pos ."""
 ]
 
 { #category : #accessing }

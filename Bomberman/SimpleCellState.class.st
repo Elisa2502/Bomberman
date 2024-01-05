@@ -11,8 +11,8 @@ SimpleCellState class >> color [
 
 { #category : #visiting }
 SimpleCellState >> accept: entity atPos: cellPos [
-
-	^ entity visitSimpleCellState: self atPos: cellPos
+	
+	^ entity visitSimpleCellState: self atPos: cellPos.
 ]
 
 { #category : #accessing }

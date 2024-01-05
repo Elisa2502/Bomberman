@@ -25,6 +25,7 @@ PlayerVisitor >> visitBreakableCellState: cell atPos: cellPos [
 PlayerVisitor >> visitSimpleCellState: cell atPos: cellPos [
 	"You should pass"
 	self position: cellPos.
+	
 ]
 
 { #category : #visiting }
