@@ -38,6 +38,11 @@ EntityVisitor >> position: newPosition [
 ]
 
 { #category : #visiting }
+EntityVisitor >> visitBombCellState: myState atPos: cellPos [
+	^ self subclassResponsibility 
+]
+
+{ #category : #visiting }
 EntityVisitor >> visitBreakableCellState: myState atPos: cellPos [
 	^ self subclassResponsibility 
 

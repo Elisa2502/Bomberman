@@ -17,6 +17,13 @@ PlayerVisitor >> color [
 ]
 
 { #category : #visiting }
+PlayerVisitor >> visitBombCellState: cell atPos: cellPos [
+	"You yould not pass for die"
+	
+	
+]
+
+{ #category : #visiting }
 PlayerVisitor >> visitBreakableCellState: cell atPos: cellPos [
 	"You should not pass if I not break"
 ]

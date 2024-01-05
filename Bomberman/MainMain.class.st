@@ -74,9 +74,6 @@ MainMain >> leftEvent [
 { #category : #accessing }
 MainMain >> main [ 
 	"""Main for play"""
-
-	"""self initialize.
-	view show."""
 	
 	self initialize.
 	view show.
@@ -98,8 +95,25 @@ MainMain >> manageEvent: anEvent [
 	(key = 'DOWN') ifTrue: [ ^ self downEvent. ].
 	(key = 'LEFT') ifTrue: [ ^ self leftEvent. ].
 	(key = 'RIGHT') ifTrue: [ ^ self rightEvent. ].
+	(key = 'A') ifTrue: [ ^ self placeBombEvent ].
 		
 	
+]
+
+{ #category : #'as yet unclassified' }
+MainMain >> placeBombEvent [ 
+	|posPlayer cellPlayer posCell|
+	
+	posPlayer := player position.
+	cellPlayer := board cellX: (posPlayer x) Y: (posPlayer y).
+	posCell := Position new.
+	posCell initializeX: posPlayer x Y: posPlayer y .
+	
+	cellPlayer state: BombCellState new.
+	(cellPlayer state) accept: player atPos: (posCell).
+	
+	self synchBoard.
+	view show.
 ]
 
 { #category : #'as yet unclassified' }
@@ -135,7 +149,6 @@ MainMain >> synchBoard [
 		]. 
 	].
 	
-	"""index := (((player position) x) * colonne) + ((player position) y) + 1."""
 	posPlayerX := player position x.
 	posPlayerY := player position y.
 	index := (posPlayerX * colonne) + posPlayerY + 1.
