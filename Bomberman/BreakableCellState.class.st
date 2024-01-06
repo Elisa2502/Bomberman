@@ -27,3 +27,9 @@ BreakableCellState >> display [
 
 	^ 'BreakableWall'
 ]
+
+{ #category : #'as yet unclassified' }
+BreakableCellState >> stateAfterExplode [
+
+	^ SimpleCellState new
+]

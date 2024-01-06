@@ -31,6 +31,12 @@ Cell >> display [
 	^ self subclassResponsibility
 ]
 
+{ #category : #'as yet unclassified' }
+Cell >> explode [
+
+	self state: state stateAfterExplode
+]
+
 { #category : #initialization }
 Cell >> initialize: newPosition [
 

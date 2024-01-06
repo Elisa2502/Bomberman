@@ -14,3 +14,9 @@ CellState >> accept: entity atPos: cellPos [
 CellState >> color [
 	^ self subclassResponsibility
 ]
+
+{ #category : #'as yet unclassified' }
+CellState >> stateAfterExplode [
+
+	^ self subclassResponsibility
+]

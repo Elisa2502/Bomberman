@@ -154,6 +154,25 @@ GameBoard >> populateBoard [
 
 ]
 
+{ #category : #'as yet unclassified' }
+GameBoard >> updateExplode: pos [
+
+	|posX posY cellBomb|
+	posX := pos x.
+	posY := pos y.
+	cellBomb := self cellX: posX Y: posY.
+	
+	cellBomb explode.
+	
+	(self cellX: (posX + 1) Y: posY) explode.
+	(self cellX: (posX - 1) Y: posY) explode.
+	(self cellX: posX Y: (posY + 1)) explode.
+	(self cellX: posX Y: (posY - 1)) explode.
+	
+	
+	
+]
+
 { #category : #initialization }
 GameBoard >> width [
  ^ width 

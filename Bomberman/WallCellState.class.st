@@ -27,3 +27,9 @@ WallCellState >> display [
 
 	^ 'Wall'
 ]
+
+{ #category : #'as yet unclassified' }
+WallCellState >> stateAfterExplode [
+
+	^ self
+]

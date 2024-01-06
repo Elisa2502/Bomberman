@@ -25,3 +25,9 @@ SimpleCellState >> display [
 
 	^ 'Empty'
 ]
+
+{ #category : #'as yet unclassified' }
+SimpleCellState >> stateAfterExplode [
+
+	^ self
+]

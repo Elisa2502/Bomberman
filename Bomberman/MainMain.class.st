@@ -112,6 +112,11 @@ MainMain >> placeBombEvent [
 	bomb := BombCellState new.
 	cellPlayer state: bomb initialize.
 	cellPlayer state startCountdown: cellPlayer.
+	
+	"Le board va observer l'explosion de la bombe"
+	cellPlayer state observer: board atPos: posCell.
+	
+	
 	(cellPlayer state) accept: player atPos: (posCell).
 	
 	self synchBoard.

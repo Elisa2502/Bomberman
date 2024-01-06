@@ -2,7 +2,9 @@ Class {
 	#name : #BombCellState,
 	#superclass : #CellState,
 	#instVars : [
-		'countdown'
+		'countdown',
+		'observer',
+		'posObs'
 	],
 	#category : #'Bomberman-board'
 }
@@ -29,13 +31,6 @@ BombCellState >> countdown: count [
 	countdown := count.
 ]
 
-{ #category : #'as yet unclassified' }
-BombCellState >> explode: cell [
-	"""The bomb explodes"""
-	cell state: SimpleCellState new.
-	
-]
-
 { #category : #accessing }
 BombCellState >> initialize [
 	"""inialize a bomb"""
@@ -45,11 +40,48 @@ BombCellState >> initialize [
 	
 ]
 
+{ #category : #accessing }
+BombCellState >> notifyObserver [
+
+	observer updateExplode: posObs
+]
+
+{ #category : #accessing }
+BombCellState >> observer [
+
+	^ observer
+]
+
+{ #category : #accessing }
+BombCellState >> observer: obs [
+
+	observer := obs
+]
+
+{ #category : #accessing }
+BombCellState >> observer: obs atPos: pos [ 
+
+	observer := obs.
+	posObs := pos
+]
+
+{ #category : #accessing }
+BombCellState >> posObs [
+
+	^ posObs
+]
+
 { #category : #'as yet unclassified' }
 BombCellState >> startCountdown: cell [
 	"""Start countdown before explodes"""
 [ countdown to: 0 by: -1 do: [ :i |
 		(Delay forSeconds: 1) wait. 
-		]. self explode: cell. 
+		]. self notifyObserver. 
 	] fork.
+]
+
+{ #category : #'as yet unclassified' }
+BombCellState >> stateAfterExplode [
+
+	^ SimpleCellState new
 ]
