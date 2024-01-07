@@ -58,8 +58,6 @@ Metacello new
 
 ### Design
 
-#### Implémentation
-
 #### Design Pattern
   Au niveau des patrons de conception, nous avons : 
   - Un visiteur 
@@ -91,8 +89,17 @@ Une fois que l'on s'est lancé au développement de notre jeu, nous nous sommes 
   - Un manque d'organisation suite à une perte de temps en début de projet,
   - Une conception difficile à définir,
   - Comprendre le vrai but du projet : avoir un jeu fonctionnel au plus vite ou mettre en place au mieux les design pattern ?
+  - Temps en commun pour travailler sur le projet
 
 
 ## Conclusion compétences
-### Ce qu'il ne faut pas faire
+
 ### Ce qu'il faut faire
+  - Réflechir globalement à une conception
+  - Se lancer très vite dans le code pour adapter par la pratique, non la théorie
+  - Répartir les tâches 
+  - Mettre en commun et expliquer les parties de chacun
+
+### Ce qu'il ne faut pas faire
+  - Vouloir une conception détaillée sur chaque problème du projet, même ceux qui ne seront peut être pas implémentés
+  - Créer un projet de 0 au lieu de reprendre directement des projets en exemple et les modifier
