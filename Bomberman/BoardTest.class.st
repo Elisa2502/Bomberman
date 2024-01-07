@@ -11,18 +11,16 @@ Class {
 BoardTest >> testCellAtXY [
     | game gridConfigureGrid2 actualBoard |
     game := GameBoard new.
-    game configureGrid2.
+    game configureGrid22.
 
-    gridConfigureGrid2 := {
-        { WallCellState. SimpleCellState. WallCellState. WallCellState. BreakableCellState. BreakableCellState. WallCellState. SimpleCellState }.
-        { SimpleCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState }.
-    }.
+    gridConfigureGrid2 := { {WallCellState. SimpleCellState. WallCellState. WallCellState. BreakableCellState. BreakableCellState. WallCellState. SimpleCellState.  }.
+                  				{SimpleCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
+                  				{WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  				{WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                 				{WallCellState. WallCellState.  BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState. }.
+                  				{WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  				{WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState. }.
+                  				{WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. }.}.
 
     actualBoard := game board.
 
@@ -45,18 +43,17 @@ BoardTest >> testPopulateBoard [
 	game := GameBoard new.
 	
 
-	gridConfigureGrid2 := {
-        { WallCellState. SimpleCellState. WallCellState. WallCellState. BreakableCellState. BreakableCellState. WallCellState. SimpleCellState }.
-        { SimpleCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState }.
-        { WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState }.
-    }.
+	gridConfigureGrid2 := { {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState.  }.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState.  BreakableCellState. BreakableCellState. SimpleCellState. SimpleCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. SimpleCellState. SimpleCellState. SimpleCellState. BreakableCellState. BreakableCellState. BreakableCellState. WallCellState.}.
+               {WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. WallCellState. }. 
+                 }.
 			
-	game configureGrid2.
+	game configureGrid22.
 	actualBoard := game board.
 
 	1 to: game height do: [ :rowIndex |
