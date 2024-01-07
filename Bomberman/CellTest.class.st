@@ -90,3 +90,49 @@ CellTest >> testAcceptPlayerEntityWallCellState [
 
 	self assert: entityOne position equals: entityTwo position
 ]
+
+{ #category : #tests }
+CellTest >> testExplodeCell [
+
+	| testCell |
+	testCell  := Cell new state: SimpleCellState new.
+	
+	"Une case simple reste une case simple lors de l'explosion"
+	self assert: (testCell explode state class) equals: SimpleCellState new class.
+	
+	
+	"Un mur qui se casse se transforme en une case simple lors de l'explosion"
+	testCell state: BreakableCellState new.
+	self assert: (testCell explode state class) equals: SimpleCellState new class.
+	
+	"Une bombe se transforme en une case simple lors de l'explosion"
+	testCell state: BombCellState new.
+	self assert: (testCell explode state class) equals: SimpleCellState new class.
+	
+
+	"Un mur reste un mur lors de l'explosion"
+	testCell state: WallCellState new.
+	self assert: (testCell explode state class) equals: WallCellState new class.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]

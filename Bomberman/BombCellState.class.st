@@ -32,6 +32,12 @@ BombCellState >> countdown: count [
 ]
 
 { #category : #accessing }
+BombCellState >> display [
+
+	^ 'Bomb'
+]
+
+{ #category : #accessing }
 BombCellState >> initialize [
 	"""inialize a bomb"""
 	super initialize.
